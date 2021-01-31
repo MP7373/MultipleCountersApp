@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Counter App</title>
+    <meta name="description" content="Simple Counter App" />
+    <meta name="author" content="Martin Payne" />
+    <style>
+      button {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button id="add-counter">Add Counter</button>
+    <div id="counters-wrapper"></div>
+    <script>
+      const counters = [];
+      const addCounterButton = document.getElementById("add-counter");
+      addCounterButton.addEventListener("click", addCounter);
+
+      function addCounter() {
+        const counterBox = document.createElement("div");
+
+        const counterTextElement = document.createElement("h3");
+        counterTextElement.innerText = "0";
+        counterBox.appendChild(counterTextElement);
+
+        const decrementCounterButton = document.createElement("button");
+        decrementCounterButton.innerText = "-";
+        decrementCounterButton.addEventListener("click", () => {
+          counterTextElement.innerText = `${Math.max(
+            0,
+            parseInt(counterTextElement.innerText, 10) - 1
+          )}`;
+        });
+        counterBox.appendChild(decrementCounterButton);
+
+        const incrementCounterButton = document.createElement("button");
+        incrementCounterButton.innerText = "+";
+        incrementCounterButton.addEventListener("click", () => {
+          counterTextElement.innerText = `${
+            parseInt(counterTextElement.innerText, 10) + 1
+          }`;
+        });
+        counterBox.appendChild(incrementCounterButton);
+
+        const resetCounterButton = document.createElement("button");
+        resetCounterButton.innerText = "Reset";
+        resetCounterButton.addEventListener("click", () => {
+          counterTextElement.innerText = "0";
+        });
+        counterBox.appendChild(resetCounterButton);
+
+        const countersSection = document.getElementById("counters-wrapper");
+        countersSection.appendChild(counterBox);
+      }
+    </script>
+  </body>
+</html>
