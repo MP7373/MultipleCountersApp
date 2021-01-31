@@ -10,6 +10,12 @@
       button {
         margin-left: 20px;
         margin-right: 20px;
+        width: 30%;
+        height: 30px;
+      }
+
+      h3 {
+        font-size: 40px;
       }
     </style>
   </head>
@@ -24,6 +30,7 @@
 
       function addCounter() {
         const counterBox = document.createElement("div");
+        counterBox.style.textAlign = "center";
 
         const counterTextElement = document.createElement("h3");
         counterTextElement.innerText = "0";
